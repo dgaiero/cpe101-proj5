@@ -6,7 +6,7 @@
 
 # I don't know how to access 'oldMaster.dat' in given directory so I have
 # created a temporary 'oldMaster.dat' file in the repository
-from given import *
+#from given import *
 
 def sortAccountNumber(fileName):
     fin = open(fileName)
@@ -41,7 +41,6 @@ def sortAccountNumber(fileName):
                 #print ('True')
                 finalList.append(masterList[k])
     '''
-
     # SORT SECOND WAY
     finalList = masterList
     finalList.sort(key=lambda a: a[0])
@@ -60,4 +59,23 @@ def sortAccountNumber(fileName):
         k += 1
     fout.close()
 
-sortAccountNumber('oldMaster.dat')
+
+def addTransaction(FileName):
+    fin = open(FileName)
+    transactionList = []
+    for line in fin:
+        words = line.split()
+        transactionList.append(words)
+    #print (transactionList)
+
+    i = 0
+    while i < len(transactionList):
+        unsortedTransaction = (int(transactionList[i][0]))
+        #transactionList.append(unsortedTransaction)
+        i += 1
+    transactionList.sort()
+    print (transactionList)
+
+
+#sortAccountNumber('oldMaster.dat')
+addTransaction('transaction.dat')
