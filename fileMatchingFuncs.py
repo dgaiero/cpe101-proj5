@@ -16,10 +16,10 @@ def sortAccountNumber(fileName):
 
     for line in fin:
         words = line.split()
-        print (words)
+        #print (words)
         masterList.append(words)
-    print ()
-    print (masterList)
+    #print ()
+    #print (masterList)
 
     while i < len(masterList):
         #print (masterList[i][0])
@@ -27,25 +27,25 @@ def sortAccountNumber(fileName):
         sortedAccountNumberList.append(unsortedAccountNumber)
         i += 1
     sortedAccountNumberList.sort()
-    print()
-    print (sortedAccountNumberList)
+    #print()
+    #print (sortedAccountNumberList)
 
-    j = 0
+    '''
+    # SORT FIRST WAY
     finalList = []
     for item in sortedAccountNumberList:
         print (item)
+        for k in range(len(masterList)):
 
-        #int(masterList[j][0])
-        if item == (int(masterList[j][0])):
-            print ('True')
-            finalList.append(masterList[j])
-        else:
-            continue
-        j += 1
+            if item == (int(masterList[k][0])):
+                #print ('True')
+                finalList.append(masterList[k])
+    '''
+
+    # SORT SECOND WAY
+    finalList = masterList
+    finalList.sort(key=lambda a: a[0])
+
     print (finalList)
-
-
-    #print (sortedList)
-
 
 sortAccountNumber('oldMaster.dat')
