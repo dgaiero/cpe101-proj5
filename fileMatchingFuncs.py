@@ -48,4 +48,14 @@ def sortAccountNumber(fileName):
 
     print (finalList)
 
+
+    fout = open('sorted_oldMaster.dat', 'w+')
+    k = 0
+    while k in range(len(finalList)):
+        tempString = ''
+        tempString += '   '.join(finalList[k])
+        fout.write('{}\n'.format(tempString))
+        k += 1
+    fout.close()
+
 sortAccountNumber('oldMaster.dat')
