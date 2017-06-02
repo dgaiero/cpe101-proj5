@@ -44,10 +44,11 @@ def sortAccountNumber(fileName):
     # SORT SECOND WAY
     finalList = masterList
     finalList.sort(key=lambda a: a[0])
+    #print (finalList)
 
     #print (finalList)
 
-
+    '''
     fout = open('sorted_oldMaster.dat', 'w+')
     k = 0
     while k in range(len(finalList)):
@@ -58,7 +59,7 @@ def sortAccountNumber(fileName):
         fout.write('{}\n'.format(tempString))
         k += 1
     fout.close()
-
+    '''
 
 def addTransaction(FileName):
     fin = open(FileName)
@@ -69,12 +70,47 @@ def addTransaction(FileName):
     #print (transactionList)
 
     i = 0
+    tempL = []
+    j = 0
+
+    transactionList.sort()
+    #print (transactionList)
+
+    floatTransactionList = []
+    for item in transactionList:
+        floatTransactionList.append(float(item[1]))
+    print (floatTransactionList)
+
+    '''
+        for item2 in item:
+            item2 = float(item2)
+            print (item2)
+            tempL.append(item2)
+    print (tempL)
+    '''
+    '''
     while i < len(transactionList):
-        unsortedTransaction = (int(transactionList[i][0]))
+        floatTransactionList = []
+        for item in transactionList[i]:
+            #item = float(item)
+            floatTransactionList.append(float(item))
+            #j += 1
+        i += 1
+    '''
+
+    '''
+    print (floatTransactionList)
+    #print (type(floatTransactionList[0]))
+    '''
+    '''
+        unsortedTransaction = (transactionList[i][0])
         #transactionList.append(unsortedTransaction)
         i += 1
-    transactionList.sort()
-    print (transactionList)
+    '''
+
+
+    #print (floatTransactionList)
+
 
 
 #sortAccountNumber('oldMaster.dat')
