@@ -8,58 +8,53 @@
 # created a temporary 'oldMaster.dat' file in the repository
 #from given import *
 
-def sortAccountNumber(fileName):
+def getTextFileInfo(fileName):
     fin = open(fileName)
-    masterList = []
-    sortedAccountNumberList = []
-    i = 0
+    textFileInfoList = []
+    #sortedAccountNumberList = []
     for line in fin:
         words = line.split()
-        #print (words)
-        masterList.append(words)
-    #print ()
-    print (masterList)
+        textFileInfoList.append(words)
+    print (textFileInfoList)
+    return textFileInfoList
 
-    while i < len(masterList):
-        #print (masterList[i][0])
-        unsortedAccountNumber = int(masterList[i][0])
+def sortAccountNumber(textFileInfoList):
+    sortedAccountNumberList = []
+    i = 0
+    while i < len(textFileInfoList):
+        unsortedAccountNumber = int(textFileInfoList[i][0])
         sortedAccountNumberList.append(unsortedAccountNumber)
         i += 1
     sortedAccountNumberList.sort()
-    #print()
-    #print (sortedAccountNumberList)
+    print()
+    print (sortedAccountNumberList)
+    return sortedAccountNumberList
 
-    '''
-    # SORT FIRST WAY
-    finalList = []
-    for item in sortedAccountNumberList:
-        print (item)
-        for k in range(len(masterList)):
+def sortTextFileInfo(textFileInfoList):
+    sortTextFileInfoList = textFileInfoList
+    sortTextFileInfoList.sort(key=lambda a: a[0])
+    print ()
+    print (sortTextFileInfoList)
+    return sortTextFileInfoList
 
-            if item == (int(masterList[k][0])):
-                #print ('True')
-                finalList.append(masterList[k])
-    '''
-    # SORT SECOND WAY
-    finalList = masterList
-    finalList.sort(key=lambda a: a[0])
-    #print (finalList)
-
-    #print (finalList)
-
-    '''
+def createSortedFile(sortTextFileInfoList):
     fout = open('sorted_oldMaster.dat', 'w+')
     k = 0
-    while k in range(len(finalList)):
+    while k in range(len(sortTextFileInfoList)):
         #tempString = ''
         #tempString += '  '.join(finalList[k])
         #print (tempString)
-        tempString = '{:4} {:6} {:11} {:10} {:15} {:12}'.format(finalList[k][0], finalList[k][1], finalList[k][2], finalList[k][3], finalList[k][4], finalList[k][5])
+        tempString = '{:4} {:6} {:11} {:10} {:15} {:12}'.format(
+                sortTextFileInfoList[k][0],
+                sortTextFileInfoList[k][1],
+                sortTextFileInfoList[k][2],
+                sortTextFileInfoList[k][3],
+                sortTextFileInfoList[k][4],
+                sortTextFileInfoList[k][5])
         fout.write('{}\n'.format(tempString))
         k += 1
     fout.close()
-    '''
-    return sortedAccountNumberList
+
     '''
 def addTransaction(FileName, inputList):
     fin = open(FileName)
@@ -112,11 +107,4 @@ def addTransaction(FileName, inputList):
         #transactionList.append(unsortedTransaction)
         i += 1
     '''
-
-
-    #print (floatTransactionList)
-
-
-
-x = sortAccountNumber('oldMaster.dat')
 #addTransaction('transaction.dat', x)
