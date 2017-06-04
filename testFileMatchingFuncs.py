@@ -15,7 +15,7 @@ def getTextFileInfo(fileName):
     for line in fin:
         words = line.split()
         textFileInfoList.append(words)
-    print (textFileInfoList)
+    print (textFileInfoList) #Added just to see what list prints
     return textFileInfoList
 
 def sortAccountNumber(textFileInfoList):
@@ -27,14 +27,14 @@ def sortAccountNumber(textFileInfoList):
         i += 1
     sortedAccountNumberList.sort()
     print()
-    print (sortedAccountNumberList)
+    print (sortedAccountNumberList) #Added just to see what list prints
     return sortedAccountNumberList
 
 def sortTextFileInfo(textFileInfoList):
     sortTextFileInfoList = textFileInfoList
     sortTextFileInfoList.sort(key=lambda a: a[0])
     print ()
-    print (sortTextFileInfoList)
+    print (sortTextFileInfoList) #Added just to see what list prints
     return sortTextFileInfoList
 
 def createSortedFile(sortTextFileInfoList):
