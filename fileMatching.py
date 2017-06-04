@@ -7,6 +7,8 @@
 from testFileMatchingFuncs import *
 
 x = getTextFileInfo('oldMaster.dat')
-sortAccountNumber(x)
+# sortAccountNumber(x)
 y = sortTextFileInfo(x)
 createSortedFile (y)
+
+transactionData = getTextFileInfo('transaction.dat')

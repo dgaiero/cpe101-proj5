@@ -4,19 +4,16 @@
 # Instructor: S. Einakian
 # Section: 5
 
-# I don't know how to access 'oldMaster.dat' in given directory so I have
-# created a temporary 'oldMaster.dat' file in the repository
-#from given import *
 
 def getTextFileInfo(fileName):
     fin = open(fileName)
     textFileInfoList = []
-    #sortedAccountNumberList = []
     for line in fin:
         words = line.split()
         textFileInfoList.append(words)
-    print (textFileInfoList) #Added just to see what list prints
+    print(textFileInfoList)  # Added just to see what list prints
     return textFileInfoList
+
 
 def sortAccountNumber(textFileInfoList):
     sortedAccountNumberList = []
@@ -27,33 +24,41 @@ def sortAccountNumber(textFileInfoList):
         i += 1
     sortedAccountNumberList.sort()
     print()
-    print (sortedAccountNumberList) #Added just to see what list prints
+    print(sortedAccountNumberList)  # Added just to see what list prints
     return sortedAccountNumberList
+
 
 def sortTextFileInfo(textFileInfoList):
     sortTextFileInfoList = textFileInfoList
     sortTextFileInfoList.sort(key=lambda a: a[0])
-    print ()
-    print (sortTextFileInfoList) #Added just to see what list prints
+    print()
+    print(sortTextFileInfoList)  # Added just to see what list prints
     return sortTextFileInfoList
 
+
 def createSortedFile(sortTextFileInfoList):
-    fout = open('sorted_oldMaster.dat', 'w+')
+    fout = open('sorted_oldMaster.dat', 'w')
     k = 0
     while k in range(len(sortTextFileInfoList)):
         #tempString = ''
         #tempString += '  '.join(finalList[k])
         #print (tempString)
         tempString = '{:4} {:6} {:11} {:10} {:15} {:12}'.format(
-                sortTextFileInfoList[k][0],
-                sortTextFileInfoList[k][1],
-                sortTextFileInfoList[k][2],
-                sortTextFileInfoList[k][3],
-                sortTextFileInfoList[k][4],
-                sortTextFileInfoList[k][5])
+            sortTextFileInfoList[k][0],
+            sortTextFileInfoList[k][1],
+            sortTextFileInfoList[k][2],
+            sortTextFileInfoList[k][3],
+            sortTextFileInfoList[k][4],
+            sortTextFileInfoList[k][5])
         fout.write('{}\n'.format(tempString))
         k += 1
     fout.close()
+
+def matchTransaction(old_sorted_list, transactionFile):
+    for i in range(len(transactionFile)):
+        pass
+
+
 
     '''
 def addTransaction(FileName, inputList):

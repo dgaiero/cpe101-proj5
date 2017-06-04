@@ -4,10 +4,6 @@
 # Instructor: S. Einakian
 # Section: 5
 
-# I don't know how to access 'oldMaster.dat' in given directory so I have
-# created a temporary 'oldMaster.dat' file in the repository
-#from given import *
-
 def sortAccountNumber(fileName):
     fin = open(fileName)
     masterList = []
