@@ -36,7 +36,7 @@ def sortTextFileInfo(textFileInfoList):
     return sortTextFileInfoList
 
 
-def createSortedFile(sortTextFileInfoList):
+def createOldMaster(sortTextFileInfoList):
     fout = open('sorted_oldMaster.dat', 'w')
     k = 0
     while k in range(len(sortTextFileInfoList)):
@@ -54,11 +54,50 @@ def createSortedFile(sortTextFileInfoList):
         k += 1
     fout.close()
 
-def matchTransaction(old_sorted_list, transactionFile):
-    for i in range(len(transactionFile)):
-        pass
+
+def createNewMaster(sortTextFileInfoList):
+    fout = open('newMaster.dat', 'w')
+    k = 0
+    while k in range(len(sortTextFileInfoList[1])):
+        #tempString = ''
+        #tempString += '  '.join(finalList[k])
+        #print (tempString)
+        tempString = '{:4} {:6} {:11} {:10} {:15} {:12}'.format(
+            sortTextFileInfoList[1][k][0],
+            sortTextFileInfoList[1][k][1],
+            sortTextFileInfoList[1][k][2],
+            sortTextFileInfoList[1][k][3],
+            sortTextFileInfoList[1][k][4],
+            sortTextFileInfoList[1][k][5])
+        fout.write('{}\n'.format(tempString))
+        k += 1
+    for i in range(len(sortTextFileInfoList[0])):
+        fout.write('Unmatched transaction record for account {}'.format(
+            sortTextFileInfoList[0]))
+    fout.close()
 
 
+def matchTransaction(old_sorted_list, transactionFile, accountNumbers):
+    notFound = []
+    for i in range(len(old_sorted_list)):
+        for j in range(len(transactionFile)):
+            if transactionFile[j][0] == old_sorted_list[i][0]:
+                old_balance = float(old_sorted_list[i][3])
+                add_balance = float(transactionFile[j][1])
+                old_sorted_list[i][3] = "{:.2f}".format(
+                    old_balance + add_balance)
+                # print (old_sorted_list[i])
+            else:
+                if int(transactionFile[j][0]) not in accountNumbers:
+                    notFound.append(int(transactionFile[j][0]))
+                    accountNumbers.append(int(transactionFile[j][0]))
+                    # print("Not found - {}".format(transactionFile[j][0]))
+        # print("\n")
+    # print("\n\n\n\n")
+    # print(old_sorted_list)
+    # print("\n\n\n\n")
+    masterData = [notFound, old_sorted_list]
+    return(masterData)
 
     '''
 def addTransaction(FileName, inputList):
