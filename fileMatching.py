@@ -5,6 +5,8 @@
 # Section: 5
 
 from testFileMatchingFuncs import *
+
+
 def main():
     fileData = getTextFileInfo('oldMaster.dat')
     accountNumbers = sortAccountNumber(fileData)
@@ -13,6 +15,7 @@ def main():
     transactionData = getTextFileInfo('transaction.dat')
     sortedData = matchTransaction(sortedData, transactionData, accountNumbers)
     createNewMaster(sortedData)
+
 
 if __name__ == "__main__":
     main()

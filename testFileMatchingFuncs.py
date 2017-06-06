@@ -11,6 +11,7 @@ def getTextFileInfo(fileName):
     for line in fin:
         words = line.split()
         textFileInfoList.append(words)
+    fin.close()
     return textFileInfoList
 
 
@@ -61,7 +62,7 @@ def createNewMaster(sortTextFileInfoList):
         fout.write('{}\n'.format(tempString))
         k += 1
     for i in range(len(sortTextFileInfoList[0])):
-        fout.write('Unmatched transaction record for account {}'.format(
+        fout.write('Unmatched transaction record for account {}\n'.format(
             sortTextFileInfoList[0]))
     fout.close()
 
