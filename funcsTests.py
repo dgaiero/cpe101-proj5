@@ -64,7 +64,9 @@ class TestCases (unittest.TestCase):
     def test_sortAccountNumber(self):
         self.assertEqual(sortAccountNumber(getTextFileInfo('oldMaster.dat')), [
             100, 120, 200, 300, 340, 500, 600, 700, 800])
-
+        self.assertEqual(sortAccountNumber(getTextFileInfo('newIn2.dat')), [
+            101, 127, 210, 245, 715, 788])
+        self.assertEqual(sortAccountNumber(getTextFileInfo('newIn3.dat')), [10, 103, 111, 555, 808])
     def test_sortTextFileInfo(self):
         self.assertEqual(sortTextFileInfo(getTextFileInfo('oldMaster.dat')), [
             ['100', 'Alan', 'Jones', '348.17', '8053564820', 'SLO'],
