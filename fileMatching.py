@@ -26,7 +26,7 @@
 # Import libraries
 # ========================================================
 
-from FileMatchingFuncs import *
+from fileMatchingFuncs import *
 
 # ========================================================
 # Main Function
