@@ -105,7 +105,7 @@ def createNewMaster(sortTextFileInfoList):
         k += 1
     for i in range(len(sortTextFileInfoList[0])):
         fout.write('Unmatched transaction record for account {}\n'.format(
-            sortTextFileInfoList[0]))
+            sortTextFileInfoList[0][i]))
     fout.close()
 
 # ========================================================
