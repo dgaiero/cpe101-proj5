@@ -3,116 +3,128 @@
 # Names: Russell Caletena and Dominic Gaiero
 # Instructor: S. Einakian
 # Section: 5
+# Github: https://github.com/dgaiero/cpe101-proj5
+# For more inforamtion, see README.md
 
-def sortAccountNumber(fileName):
+#######                    #     #
+#       # #      ######    ##   ##   ##   #####  ####  #    # # #    #  ####
+#       # #      #         # # # #  #  #    #   #    # #    # # ##   # #    #
+#####   # #      #####     #  #  # #    #   #   #      ###### # # #  # #
+#       # #      #         #     # ######   #   #      #    # # #  # # #  ###
+#       # #      #         #     # #    #   #   #    # #    # # #   ## #    #
+#       # ###### ######    #     # #    #   #    ####  #    # # #    #  ####
+
+#######
+#       #    # #    #  ####  ##### #  ####  #    #  ####
+#       #    # ##   # #    #   #   # #    # ##   # #
+#####   #    # # #  # #        #   # #    # # #  #  ####
+#       #    # #  # # #        #   # #    # #  # #      #
+#       #    # #   ## #    #   #   # #    # #   ## #    #
+#        ####  #    #  ####    #   #  ####  #    #  ####
+
+# ========================================================
+# Function that opens the text file, and parses it to be
+# used for other functions
+# ========================================================
+
+
+def getTextFileInfo(fileName):
     fin = open(fileName)
-    masterList = []
-    sortedAccountNumberList = []
-    i = 0
+    textFileInfoList = []
     for line in fin:
         words = line.split()
-        #print (words)
-        masterList.append(words)
-    #print ()
-    print (masterList)
+        textFileInfoList.append(words)
+    fin.close()
+    return textFileInfoList
 
-    while i < len(masterList):
-        #print (masterList[i][0])
-        unsortedAccountNumber = int(masterList[i][0])
+# ========================================================
+# This function returns a list of just account numbers
+# ========================================================
+
+
+def sortAccountNumber(textFileInfoList):
+    sortedAccountNumberList = []
+    i = 0
+    while i < len(textFileInfoList):
+        unsortedAccountNumber = int(textFileInfoList[i][0])
         sortedAccountNumberList.append(unsortedAccountNumber)
         i += 1
     sortedAccountNumberList.sort()
-    #print()
-    #print (sortedAccountNumberList)
+    return sortedAccountNumberList
 
-    '''
-    # SORT FIRST WAY
-    finalList = []
-    for item in sortedAccountNumberList:
-        print (item)
-        for k in range(len(masterList)):
+# ========================================================
+# This function sorts all of the account data by
+# account number
+# ========================================================
 
-            if item == (int(masterList[k][0])):
-                #print ('True')
-                finalList.append(masterList[k])
-    '''
-    # SORT SECOND WAY
-    finalList = masterList
-    finalList.sort(key=lambda a: a[0])
-    #print (finalList)
 
-    #print (finalList)
+def sortTextFileInfo(textFileInfoList):
+    sortTextFileInfoList = textFileInfoList
+    sortTextFileInfoList.sort(key=lambda a: a[0])
+    return sortTextFileInfoList
 
-    '''
-    fout = open('sorted_oldMaster.dat', 'w+')
+# ========================================================
+# This function creates the sorted old master file
+# (style the data so that it matches the oldMaster file)
+# ========================================================
+
+
+def createOldMaster(sortTextFileInfoList):
+    fout = open('sorted_oldMaster.dat', 'w')
     k = 0
-    while k in range(len(finalList)):
-        #tempString = ''
-        #tempString += '  '.join(finalList[k])
-        #print (tempString)
-        tempString = '{:4} {:6} {:11} {:10} {:15} {:12}'.format(finalList[k][0], finalList[k][1], finalList[k][2], finalList[k][3], finalList[k][4], finalList[k][5])
+    while k in range(len(sortTextFileInfoList)):
+        tempString = '{:4} {:6} {:11} {:10} {:15} {:12}'.format(
+            sortTextFileInfoList[k][0],
+            sortTextFileInfoList[k][1],
+            sortTextFileInfoList[k][2],
+            sortTextFileInfoList[k][3],
+            sortTextFileInfoList[k][4],
+            sortTextFileInfoList[k][5])
         fout.write('{}\n'.format(tempString))
         k += 1
     fout.close()
-    '''
-    return sortedAccountNumberList
-    '''
-def addTransaction(FileName, inputList):
-    fin = open(FileName)
-    transactionList = []
-    for line in fin:
-        words = line.split()
-        transactionList.append(words)
-    #print (transactionList)
 
-    i = 0
-    tempL = []
-    j = 0
-
-    transactionList.sort()
-    print (transactionList)
-
-    floatTransactionList = []
-    for item in transactionList:
-        floatTransactionList.append(float(item[1]))
-    print (floatTransactionList)
-
-    while j < len(floatTransactionList):
-        if item == '27.14':
-            print ('True')
-        j += 1
-    '''
-    '''
-        for item2 in item:
-            item2 = float(item2)
-            print (item2)
-            tempL.append(item2)
-    print (tempL)
-    '''
-    '''
-    while i < len(transactionList):
-        floatTransactionList = []
-        for item in transactionList[i]:
-            #item = float(item)
-            floatTransactionList.append(float(item))
-            #j += 1
-        i += 1
-    '''
-
-    '''
-    print (floatTransactionList)
-    #print (type(floatTransactionList[0]))
-    '''
-    '''
-        unsortedTransaction = (transactionList[i][0])
-        #transactionList.append(unsortedTransaction)
-        i += 1
-    '''
+# ========================================================
+# The function creates the new master file with the
+# unmatched transactions
+# ========================================================
 
 
-    #print (floatTransactionList)
+def createNewMaster(sortTextFileInfoList):
+    fout = open('newMaster.dat', 'w')
+    k = 0
+    while k in range(len(sortTextFileInfoList[1])):
+        tempString = '{:4} {:6} {:11} {:10} {:15} {:12}'.format(
+            sortTextFileInfoList[1][k][0],
+            sortTextFileInfoList[1][k][1],
+            sortTextFileInfoList[1][k][2],
+            sortTextFileInfoList[1][k][3],
+            sortTextFileInfoList[1][k][4],
+            sortTextFileInfoList[1][k][5])
+        fout.write('{}\n'.format(tempString))
+        k += 1
+    for i in range(len(sortTextFileInfoList[0])):
+        fout.write('Unmatched transaction record for account {}\n'.format(
+            sortTextFileInfoList[0]))
+    fout.close()
+
+# ========================================================
+# This function matches transactions to the master file
+# ========================================================
 
 
-
-x = sortAccountNumber('oldMaster.dat')
-#addTransaction('transaction.dat', x)
+def matchTransaction(old_sorted_list, transactionFile, accountNumbers):
+    notFound = []
+    for i in range(len(old_sorted_list)):
+        for j in range(len(transactionFile)):
+            if transactionFile[j][0] == old_sorted_list[i][0]:
+                old_balance = float(old_sorted_list[i][3])
+                add_balance = float(transactionFile[j][1])
+                old_sorted_list[i][3] = "{:.2f}".format(
+                    old_balance + add_balance)
+            else:
+                if int(transactionFile[j][0]) not in accountNumbers:
+                    notFound.append(int(transactionFile[j][0]))
+                    accountNumbers.append(int(transactionFile[j][0]))
+    masterData = [notFound, old_sorted_list]
+    return(masterData)
