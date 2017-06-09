@@ -42,7 +42,24 @@ class TestCases (unittest.TestCase):
             ['120', 'Ford', 'Strong', '90.00', '8051155329', 'SLO'],
             ['340', 'Lena', 'Sharp', '70.00', '8058561859', 'SLO'],
             ['600', 'Nicol', 'Green', '-20.00', '8058875571', 'SLO']
-        ])
+            ])
+
+        self.assertEqual(getTextFileInfo('newIn2.dat'), [
+            ['101', 'Ayssa', 'Sherman', '240.22', '8051298970', 'SLO'],
+            ['127', 'Robbin', 'Perry', '-59.37', '8051234820', 'Arroyo_Grande'],
+            ['210', 'Nolan', 'Woodbreak', '327.22', '8059855128', 'SLO'],
+            ['245', 'Jeffry', 'Smith', '15.31', '8057901000', 'Santa_Maria'],
+            ['715', 'Erick', 'Dowsy', '123.22', '8052006912', 'Atascadero'],
+            ['788', 'Laris', 'Nolan', '697.86', '805125789', 'Paso_Robles'],
+            ])
+
+        self.assertEqual(getTextFileInfo('newIn3.dat'), [
+            ['010', 'Jo', 'Lee', '-185.02', '8052348970', 'Santa_Maria'],
+            ['103', 'Kent', 'Lee', '1698.48', '8123464820', 'SLO'],
+            ['111', 'Shay', 'Jam', '143.02', '8051200891', 'Santa_Rose'],
+            ['555', 'Renei', 'McCart', '100.59', '8057901237', 'Santa_Rose'],
+            ['808', 'Sara', 'Grave', '-83.73', '8052586912', 'Morro_Bay'],
+            ])
 
     def test_sortAccountNumber(self):
         self.assertEqual(sortAccountNumber(getTextFileInfo('oldMaster.dat')), [
